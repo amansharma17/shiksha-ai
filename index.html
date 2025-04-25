@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shiksha.ai - From Questions to Understanding</title>
+  <title>Shiksha.ai – Coming Soon</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -14,11 +14,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
     .container {
-      text-align: center;
       max-width: 700px;
+      width: 100%;
       padding: 30px;
     }
     .logo {
@@ -46,22 +49,89 @@
       border-radius: 8px;
       font-size: 1em;
       cursor: pointer;
-      transition: background 0.3s ease;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+      animation: pulse 1.8s infinite;
+      display: inline-block;
+      margin-top: 20px;
     }
     .cta:hover {
       background-color: #E76F51;
+      transform: scale(1.05);
+    }
+    .success-message {
+      margin-top: 20px;
+      font-size: 1em;
+      color: #90EE90;
+      display: none;
+    }
+    .loading-dots {
+      display: none;
+      font-size: 1em;
+      color: #F4A261;
+      margin-top: 15px;
+    }
+    .show {
+      display: inline;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 2.2em;
+      }
+      .tagline {
+        font-size: 1.1em;
+      }
+      .description {
+        font-size: 1em;
+      }
+      .cta {
+        font-size: 0.9em;
+        padding: 10px 20px;
+      }
     }
   </style>
+  <script>
+    function showSuccessMessage() {
+      const loader = document.getElementById('loading-dots');
+      const message = document.getElementById('success-message');
+      loader.classList.add('show');
+
+      setTimeout(() => {
+        loader.classList.remove('show');
+        message.style.display = 'block';
+      }, 3000);
+      
+      setTimeout(() => {
+        //message.classList.remove('show');
+        message.style.display = 'none';
+      }, 10000);
+    }
+  </script>
 </head>
 <body>
   <div class="container">
-    <div class="logo">Shiksha.ai</div>
+    <div class="logo">Shiksha AI</div>
     <div class="tagline">From Questions to Understanding</div>
     <div class="description">
-      Shiksha.ai is your personal AI-powered learning agent. <br>
-      It adapts to your level, retrieves precise answers, and helps you grow from concept to confidence—across subjects like math, science, and more.
+      Shiksha AI is your personal AI-powered learning agent.<br>
+      It adapts to your level, retrieves precise answers, and helps you grow from concept to confidence—across subjects like math, science, and more.<br><br>
+      💡 <strong>Join our early access waitlist</strong> to request a demo of our upcoming beta version.
     </div>
-    <button class="cta">Join the Waitlist</button>
+    <a href="mailto:amansharma.mailbox@gmail.com?subject=Requesting Demo from Shiksha AI" class="cta" onclick="showSuccessMessage()">Request Demo from Our Team</a>
+    <div id="loading-dots" class="loading-dots">⏳ Sending your request...</div>
+    <div id="success-message" class="success-message">🎉 Thanks for your interest! We'll get back to you soon.</div>
   </div>
 </body>
 </html>
